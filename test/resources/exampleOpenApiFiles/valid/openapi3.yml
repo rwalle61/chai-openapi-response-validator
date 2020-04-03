@@ -157,6 +157,24 @@ paths:
             text/html:
               schema:
                 type: string
+  # /test/matchPathWithoutParamsInsteadOfPathWithParams/{pathWithParams}:
+  #   get:
+  #     responses:
+  #       200:
+  #         description: Response body should be a number
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: number
+  /test/matchPathWithoutParamsInsteadOfPathWithParams/pathWithoutParams:
+    get:
+      responses:
+        200:
+          description: Response body should be a string
+          content:
+            application/json:
+              schema:
+                type: string
 components:
   schemas:
     ExampleSchemaObject:
