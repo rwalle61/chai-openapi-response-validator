@@ -414,6 +414,26 @@ openApiSpecs.forEach((spec) => {
             });
           });
         });
+
+        describe('res.req.path matches both templated and non-templated OpenAPI paths', function () {
+          const res = {
+            status: 200,
+            req: {
+              method: 'GET',
+              path: '/test/matchNonTemplatedPathInsteadOfTemplatedPath/nonTemplatedPath',
+            },
+            body: 'valid body (string)',
+          };
+
+          it('passes', function () {
+            expect(res).to.satisfyApiSpec;
+          });
+
+          it('fails when using .not', function () {
+            const assertion = () => expect(res).to.not.satisfyApiSpec;
+            expect(assertion).to.throw('expected res not to satisfy API spec for \'200\' response defined for endpoint \'GET /test/matchNonTemplatedPathInsteadOfTemplatedPath/nonTemplatedPath\' in OpenAPI spec');
+          });
+        });
       });
 
       describe('\'res\' does NOT satisfy the spec', function () {

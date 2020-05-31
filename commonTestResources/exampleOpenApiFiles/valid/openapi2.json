@@ -283,6 +283,32 @@
           }
         }
       }
+    },
+    "/test/matchNonTemplatedPathInsteadOfTemplatedPath/{templatedPath}": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body should be a number",
+            "schema": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "/test/matchNonTemplatedPathInsteadOfTemplatedPath/nonTemplatedPath": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response body should be a string",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
